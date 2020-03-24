@@ -10,6 +10,7 @@
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "../headers/Star.hpp"
+#include "../headers/Trail.hpp"
 #include "../headers/Helper.hpp"
 
 #define PI   3.1415
@@ -35,7 +36,7 @@ LightSpeed::Star::Star(
     sf::Color           _color
 )
 {
-
+    trail = new LightSpeed::Trail(_color, toolkit::Vector2f(_startPosition[0], _startPosition[1]), this);
     set_position(_startPosition[0], _startPosition[1], _startPosition[2]);  // Posicionamos la pelota en esa posicion
     speed = _speed;
     set_color(_color);
@@ -52,6 +53,7 @@ void LightSpeed::Star::update(float delta)
 {
 
     position[2] -= speed;
+    trail->update(delta);
 
     if (position[2] < 1)
     {
@@ -59,6 +61,8 @@ void LightSpeed::Star::update(float delta)
             Helper::generateRandom(-window_size[0], window_size[0]),
             Helper::generateRandom(-window_size[0], window_size[0]),
             window_size[0]);
+
+        trail->pz = position[2];
 
     }
 
@@ -68,9 +72,10 @@ void LightSpeed::Star::render(RenderWindow& window)
 {
     sf::CircleShape circle;   
 
-    float sx = Helper::map(position[0] / position[2], 0, 1,  window_size[0] / 2, window_size[0]);
-    float sy = Helper::map(position[1] / position[2], 0, 1,  window_size[1] / 2, window_size[1]);
-    float sz = position[2];
+    
+    simulationCoord.sx = Helper::map(position[0] / position[2], 0, 1,  window_size[0] / 2, window_size[0]);
+    simulationCoord.sy = Helper::map(position[1] / position[2], 0, 1,  window_size[1] / 2, window_size[1]);
+    simulationCoord.sz = position[2];
 
     auto mouse = sf::Mouse::getPosition(window);
     speed = Helper::map(mouse.x < 0 ? 0 : (float)mouse.x, 0, window_size[0], 0, 20);
@@ -81,8 +86,9 @@ void LightSpeed::Star::render(RenderWindow& window)
     circle.setOrigin(r, r);
     circle.setFillColor(polygonColor);
 
-    circle.setPosition(sx, sy);
+    circle.setPosition(simulationCoord.sx, simulationCoord.sy);
 
+    trail->render(window);
     window.draw(circle);
 }
 

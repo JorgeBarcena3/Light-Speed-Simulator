@@ -21,12 +21,22 @@ using namespace sf;
 
 namespace LightSpeed
 {
+    class Trail;
+
+    struct Simulation2DCoord
+    {
+        float sx;
+        float sy;
+        float sz;
+
+    };
 
     /*
     * Maneja un objeto del tipo star
     */
     class Star : public Model2D
     {
+                
 
     public:
 
@@ -39,7 +49,14 @@ namespace LightSpeed
 
     public:
         
+        Trail          *              trail;          // Estela de la estrella
+
         float                         speed;          // Velocidad
+
+        /*
+        * Coordenadas para la simulacion
+        */
+        Simulation2DCoord simulationCoord;
 
     public:
 

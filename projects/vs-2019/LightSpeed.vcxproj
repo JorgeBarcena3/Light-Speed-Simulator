@@ -90,10 +90,12 @@
     <ClInclude Include="..\..\code\headers\Star.hpp" />
     <ClInclude Include="..\..\code\headers\Helper.hpp" />
     <ClInclude Include="..\..\code\headers\Model2D.hpp" />
+    <ClInclude Include="..\..\code\headers\Trail.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\code\source\Star.cpp" />
     <ClCompile Include="..\..\code\source\main.cpp" />
+    <ClCompile Include="..\..\code\source\Trail.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,11 +14,8 @@
 #include <vector>
 #include <stdlib.h>     /* srand, rand */
 #include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
-#include <TGUI/TGUI.hpp>
 
-
-#define SIZE  720
+#define SIZE  700
 
 using namespace sf;
 using namespace LightSpeed;
@@ -46,9 +43,8 @@ int main()
             (
                 Helper::generateRandom(1, 3),
                 toolkit::Vector3f({ Helper::generateRandom(-SIZE, SIZE), Helper::generateRandom(-SIZE, SIZE), Helper::generateRandom(0, SIZE) }),
-                sf::Color::White
-            );
-       
+                sf::Color(255, 255, 196)
+            );   
 
     }
 

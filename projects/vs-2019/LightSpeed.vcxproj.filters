@@ -7,6 +7,9 @@
     <ClCompile Include="..\..\code\source\Star.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\code\source\Trail.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\code\headers\Model2D.hpp">
@@ -16,6 +19,9 @@
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\code\headers\Helper.hpp">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\code\headers\Trail.hpp">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>
